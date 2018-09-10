@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!-- http://www.mybatis.org/generator/configreference/xmlconfig.html -->
+<generatorConfiguration>
+
+    <!-- http://www.mybatis.org/generator/configreference/classPathEntry.html -->
+    <classPathEntry location="D:\Repository\maven\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar"/>
+
+    <!-- http://www.mybatis.org/generator/configreference/context.html -->
+    <context id="MySQLTables" targetRuntime="MyBatis3" defaultModelType="conditional">
+
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!-- http://www.mybatis.org/generator/configreference/plugin.html -->
+        <!--
+        <plugin type="org.mybatis.generator.plugins.KryoPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.PaginationPlugin"/>
+        -->
+
+        <!-- http://www.mybatis.org/generator/configreference/commentGenerator.html -->
+        <commentGenerator>
+            <!-- 去除自动生成的日期注释 -->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!-- http://www.mybatis.org/generator/configreference/connectionFactory.html -->
+        <!--
+        <connectionFactory>
+            <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+            <property name="connectionURL" value="jdbc:mysql://192.168.3.96:3306/micro_user?useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="userId" value="root"/>
+            <property name="password" value="123456" />
+        </connectionFactory>
+        -->
+
+        <!-- http://www.mybatis.org/generator/configreference/jdbcConnection.html -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.3.96:3306/micro_user?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <!-- http://www.mybatis.org/generator/configreference/javaTypeResolver.html -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- http://www.mybatis.org/generator/configreference/javaModelGenerator.html -->
+        <javaModelGenerator targetPackage="com.zlikun.jee.model"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- http://www.mybatis.org/generator/configreference/sqlMapGenerator.html -->
+        <sqlMapGenerator targetPackage="mappers" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- http://www.mybatis.org/generator/configreference/javaClientGenerator.html -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.zlikun.jee.dao"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- http://www.mybatis.org/generator/configreference/table.html -->
+        <table tableName="tbl_user" domainObjectName="User"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="false">
+            <!-- http://www.mybatis.org/generator/configreference/property.html -->
+            <property name="useActualColumnNames" value="true"/>
+            <!-- http://www.mybatis.org/generator/configreference/columnRenamingRule.html -->
+            <!-- <columnRenamingRule /> -->
+            <!-- http://www.mybatis.org/generator/configreference/generatedKey.html -->
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <!-- http://www.mybatis.org/generator/configreference/columnOverride.html -->
+            <columnOverride column="create_time" property="createTime"/>
+            <!-- http://www.mybatis.org/generator/configreference/ignoreColumn.html -->
+            <ignoreColumn column="version"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
